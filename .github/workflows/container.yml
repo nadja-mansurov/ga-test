@@ -26,7 +26,12 @@ jobs:
         if: always()
         with: 
           entrypoint: ./script.sh
-          args: "Some string"      
+          args: "Some string"    
+      - name: Send a docker image
+        uses: docker://technosophos/slack-notify 
+        env:  
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: 'Hallo Slack'
   node-docker:
     runs-on: ubuntu-latest
     services: 
