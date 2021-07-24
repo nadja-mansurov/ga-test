@@ -12,10 +12,11 @@ jobs:
       - name: Step with Docker
         uses: docker://node:12.14.1-alpine3.10
         with: 
-          entrypoint: 'bin/echo'
+          entrypoint: '/bin/echo'
           args: 'Hello'
       - name: Log node version
         uses: docker://node:12.14.1-alpine3.10
+        if: always()
         with: 
           entrypoint: /usr/local/bin/node
           args: -v
